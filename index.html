@@ -86,3 +86,59 @@
       <article id="viz-5" class="viz-section">
         <span class="viz-num">05</span>
         <h3>How Much Warming Will You Live Through?</h3>
+                <p class="caption">Global temperature in your birth year compared with the year you turn 75. Planned interaction: birth-year selector.</p>
+        <div id="viz-birthyear" class="viz-container"><div class="placeholder">Birth-year explorer · coming soon</div></div>
+      </article>
+
+      <article id="viz-6" class="viz-section">
+        <span class="viz-num">06</span>
+        <h3>What Makes the Future Uncertain: Our Choices or the Models?</h3>
+        <p class="caption">How much of the spread in projections comes from the emissions scenario versus model disagreement. After about 2064, our choices matter more.</p>
+        <div id="viz-uncertainty" class="viz-container"><div class="placeholder">Uncertainty breakdown · coming soon</div></div>
+      </article>
+    </section>
+
+    <!-- ===== PROTOTYPE WRITE-UP (required: ≥4 sentences each) ===== -->
+    <section id="writeup" class="prose">
+      <h2 class="section-title">Prototype Write-Up</h2>
+
+      <h3>1. What have you done so far?</h3>
+      <p id="writeup-progress">
+        So far, our group has continued building on our Project 3 interactive visualization, which
+        uses CMIP6 climate model data to explore how global temperatures could change under
+        different emissions scenarios. For our final project, we decided to narrow our focus to SSP1-2.6
+        and SSP5-8.5 to compare how lower and very high emissions could lead to different climate
+        futures. We created six static visualizations for our proposal, including warming stripes,
+        temperature threshold crossings, warming rates, climate model comparisons, a birth-year
+        comparison, and model uncertainty. We also planned interactive features such as hover tooltips,
+        an adjustable temperature threshold, and a birth-year selector to make the data more engaging
+        and easier to understand. For this initial prototype, we adapted our existing Project 3
+        visualization to focus on the two selected scenarios while keeping its interactive features.
+      </p>
+
+      <h3>2. What will be the most challenging part of your project to design, and why?</h3>
+      <p id="writeup-challenge">
+        We think the most challenging part of our project will be combining our six visualizations
+        into one interactive webpage that tells a clear story. Since we're working with multiple climate
+        models and two different emissions scenarios, we want to make sure the information is accurate
+        without overwhelming users with too many graphs or interactions. Another challenge will be
+        implementing features like the birth-year selector and adjustable temperature thresholds
+        because the visualizations will need to update correctly based on user input. We also want to
+        find a clear way to show uncertainty between climate models so readers understand that the
+        projections aren't exact predictions. Overall, our goal is to make the webpage interactive and
+        informative while keeping it easy for users to follow.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      Data: CMIP6 global surface air temperature anomalies, model ensemble means
+      (<a href="https://github.com/Priestley-Centre/CMIP5_CMIP6_FaIR_gsat_data" target="_blank" rel="noopener">Priestley Centre</a>).
+      Built with D3.js for DSC 106.
+    </p>
+  </footer>
+
+</body>
+</html>
