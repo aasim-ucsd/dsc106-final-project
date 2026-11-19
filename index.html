@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Hot Will It Get? Two Climate Futures (1850–2100)</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Ryan: if your Project 3 code uses a <script src> for D3 instead of an ES module import, keep it here -->
+  <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
+  <script type="module" src="main.js"></script>
+</head>
+<body>
+
+  <!-- ===== HEADER / HOOK ===== -->
+  <header class="hero">
+    <div class="stripes-band" aria-hidden="true"></div>
+    <p class="eyebrow">DSC 106 Final Project · Initial Prototype</p>
+    <h1>How Hot Will It Get?</h1>
+    <p class="subtitle">Two climate futures, 1850–2100</p>
+    <p class="team">Muska Mesdaq · Ayesha Asim · Ryan Kasem</p>
+  </header>
+
+  <main>
+
+    <!-- ===== INTRODUCTION ===== -->
+    <section id="intro" class="prose">
+      <p class="lede">
+        A child born today could live through a world that is less than 1 °C warmer than
+        their birth year, or one that is about 4.5 °C warmer. Which one depends on the choices we make about emissions.
+      </p>
+      <p>
+        This page uses CMIP6 climate model projections to compare two possible futures.
+        Under <span class="tag low">SSP1-2.6</span>, emissions fall sharply and warming
+        levels off. Under <span class="tag high">SSP5-8.5</span>, emissions stay very
+        high and warming keeps speeding up. Both futures share the same past. Scroll down
+        to see where they split, and how much that split could matter to you.
+      </p>
+    </section>
+
+    <!-- ===== PROTOTYPE INTERACTIVE VIZ (Ryan) ===== -->
+    <section id="prototype" class="viz-section featured">
+      <h2>Two Paths From the Same Past</h2>
+      <p class="caption">
+        Global surface air temperature anomaly from 1850 to 2100 under SSP1-2.6 and SSP5-8.5.
+        <!-- Ryan: replace with a one-line note on how to use the interaction, e.g. "Hover over a line to see each model's value." -->
+      </p>
+      <!-- Ryan: render your D3 chart into this div (d3.select('#main-viz')) -->
+      <div id="main-viz" class="viz-container">
+        <div class="placeholder">Interactive visualization loading…</div>
+      </div>
+    </section>
+
+    <!-- ===== 6 PLANNED VISUALIZATIONS ===== -->
+    <section id="story">
+      <h2 class="section-title">The Story, in Six Charts</h2>
+      <p class="prose section-note">Coming soon. These are the visualizations we're building for the final version.</p>
+
+      <article id="viz-1" class="viz-section">
+        <span class="viz-num">01</span>
+        <h3>Warming Stripes for Two Climate Futures</h3>
+        <p class="caption">Each stripe is one year, colored by global temperature anomaly. Both scenarios share the same history, then split after today.</p>
+        <div id="viz-stripes" class="viz-container"><div class="placeholder">Warming stripes (D3) · coming soon</div></div>
+      </article>
+
+      <article id="viz-2" class="viz-section">
+        <span class="viz-num">02</span>
+        <h3>When Each Climate Model Crosses the Paris Thresholds</h3>
+        <p class="caption">Each dot is the year one model first passes 1.5 °C, 2 °C, or 3 °C. Planned interaction: adjustable temperature threshold.</p>
+        <div id="viz-thresholds" class="viz-container"><div class="placeholder">Threshold crossings · coming soon</div></div>
+      </article>
+
+      <article id="viz-3" class="viz-section">
+        <span class="viz-num">03</span>
+        <h3>How Fast the Planet Is Warming</h3>
+        <p class="caption">This chart shows the speed of warming in °C per decade. Under SSP1-2.6, warming nearly stops by the 2060s. Under SSP5-8.5, it speeds up to about 0.70 °C per decade.</p>
+        <div id="viz-rate" class="viz-container"><div class="placeholder">Warming rate · coming soon</div></div>
+      </article>
+
+      <article id="viz-4" class="viz-section">
+        <span class="viz-num">04</span>
+        <h3>How Model Estimates Split Into Two Futures</h3>
+        <p class="caption">Model estimates across four IPCC time periods: they overlap almost completely in 2021–2040, and by 2081–2100 the two scenarios are fully separated.</p>
+        <div id="viz-distributions" class="viz-container"><div class="placeholder">Model distributions · coming soon</div></div>
+      </article>
+
+      <article id="viz-5" class="viz-section">
+        <span class="viz-num">05</span>
+        <h3>How Much Warming Will You Live Through?</h3>
