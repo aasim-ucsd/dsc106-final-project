@@ -1,0 +1,169 @@
+/* Main interactive chart (Ryan). Everything is prefixed mv- so it won't clash with the page styles. */
+#main-viz {
+  --mv-historical: #5b6470;
+  --mv-ssp126: var(--low, #2c7bb6);
+  --mv-ssp585: var(--high, #d7191c);
+  --mv-grid: #ebe9e4;
+  --mv-border: #cfcbc2;
+  --mv-projected-bg: #f4f2ec;
+}
+
+/* ---------- Controls ---------- */
+.mv-controls { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.mv-row { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.mv-group { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.mv-label { font-weight: 600; font-size: 0.85rem; min-width: 52px; }
+
+#main-viz button {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 5px 12px;
+  border: 1px solid var(--mv-border);
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+}
+#main-viz button:hover { border-color: var(--text); }
+#main-viz button:focus-visible { outline: 2px solid var(--mv-ssp126); outline-offset: 2px; }
+
+.mv-pill { border-radius: 999px; display: inline-flex; align-items: center; }
+.mv-pill[aria-pressed="false"] { color: var(--muted); background: transparent !important; border-style: dashed !important; }
+.mv-pill[aria-pressed="false"] .mv-swatch { opacity: 0.25; }
+
+.mv-seg { display: inline-flex; }
+.mv-seg button { border-radius: 0; margin-left: -1px; }
+.mv-seg button:first-child { border-radius: 6px 0 0 6px; margin-left: 0; }
+.mv-seg button:last-child { border-radius: 0 6px 6px 0; }
+#main-viz .mv-seg button[aria-pressed="true"],
+#main-viz .mv-presets button[aria-pressed="true"] {
+  background: var(--text);
+  border-color: var(--text);
+  color: #fff;
+  position: relative;
+}
+
+.mv-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 6px;
+  flex: none;
+}
+
+/* ---------- Chart ---------- */
+.mv-chart { width: 100%; }
+.mv-chart svg { display: block; max-width: 100%; height: auto; user-select: none; -webkit-user-select: none; }
+
+.mv-axis text { font-size: 12px; fill: var(--muted); }
+.mv-axis path, .mv-axis line { stroke: #b9b5ab; }
+.mv-grid line { stroke: var(--mv-grid); }
+.mv-grid path { display: none; }
+.mv-axis-title { font-size: 12px; fill: var(--muted); }
+.mv-projected-bg { fill: var(--mv-projected-bg); }
+
+.mv-region {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: var(--muted);
+}
+
+.mv-line { fill: none; stroke-width: 2.4; stroke-linejoin: round; transition: opacity 300ms; }
+.mv-line.historical { stroke-width: 2; }
+.mv-band { fill-opacity: 0.16; stroke: none; transition: opacity 300ms; }
+.mv-model-line { fill: none; stroke-width: 0.9; stroke-opacity: 0.35; transition: opacity 300ms; }
+
+.mv-end-label { font-size: 12px; font-weight: 600; transition: opacity 300ms; }
+
+.mv-ref-line { stroke: #9a958a; stroke-dasharray: 4 4; }
+.mv-ref-label { font-size: 11px; fill: var(--muted); }
+
+.mv-t-line { stroke: var(--text); stroke-width: 1.5; }
+.mv-t-label { font-size: 12px; font-weight: 700; fill: var(--text); paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+
+.mv-marker { stroke: #fff; stroke-width: 2; cursor: pointer; transition: opacity 300ms; }
+.mv-marker:hover { stroke: var(--text); }
+
+.mv-hover-line { stroke: var(--text); stroke-width: 1; opacity: 0.4; }
+.mv-hover-dot { stroke: #fff; stroke-width: 1.5; }
+
+.mv-off { opacity: 0 !important; pointer-events: none; }
+.mv-faded { opacity: 0.12; }
+
+.mv-ctx-line { fill: none; stroke-width: 1; opacity: 0.85; transition: opacity 300ms; }
+.mv-ctx-line.mv-ctx-off { opacity: 0.12; }
+.mv-ctx-label { font-size: 11px; fill: var(--muted); }
+.mv-brush .selection { fill: var(--text); fill-opacity: 0.08; stroke: var(--text); stroke-opacity: 0.5; }
+.mv-brush .overlay { cursor: crosshair; }
+
+/* ---------- Threshold explorer ---------- */
+.mv-threshold {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border, #e3e1dc);
+}
+.mv-threshold-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-bottom: 12px;
+}
+.mv-threshold-head label { font-weight: 600; }
+.mv-threshold-head output {
+  font-variant-numeric: tabular-nums;
+}
+#mv-slider { flex: 1 1 180px; accent-color: var(--text); }
+.mv-presets { display: inline-flex; gap: 6px; }
+#main-viz .mv-presets button { border-radius: 999px; padding: 3px 10px; font-size: 0.8rem; }
+
+.mv-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.mv-card {
+  border: 1px solid var(--border, #e3e1dc);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+.mv-card-head { display: flex; align-items: center; font-size: 0.85rem; font-weight: 600; }
+.mv-card-year { font-size: 1.9rem; font-weight: 700; line-height: 1.2; margin: 2px 0; font-variant-numeric: tabular-nums; }
+#main-viz .mv-year-link {
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.mv-never { color: var(--muted); font-size: 1.3rem; }
+.mv-card-sub { font-size: 0.85rem; color: var(--muted); }
+.mv-gap { margin: 10px 0 0; font-weight: 600; }
+
+.mv-note { color: var(--muted); font-size: 0.85rem; margin: 14px 0 0; }
+
+/* ---------- Tooltip (appended to body) ---------- */
+.mv-tooltip {
+  position: fixed;
+  z-index: 20;
+  pointer-events: none;
+  background: #fff;
+  border: 1px solid #d6d2c8;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  min-width: 190px;
+  max-width: 300px;
+  color: var(--text);
+}
+.mv-tooltip[hidden] { display: none; }
+.mv-tt-year { font-weight: 700; margin-bottom: 4px; }
+.mv-tt-row { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-top: 4px; }
+.mv-tt-row span { display: inline-flex; align-items: center; }
+.mv-tt-sub { color: var(--muted); font-size: 11.5px; padding-left: 16px; }
+.mv-tt-tag { color: var(--muted); font-size: 12px; margin-top: 4px; }

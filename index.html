@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How Hot Will It Get? Two Climate Futures (1850–2100)</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Ryan: if your Project 3 code uses a <script src> for D3 instead of an ES module import, keep it here -->
-  <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
+  <link rel="stylesheet" href="viz/main-viz.css">
   <script type="module" src="main.js"></script>
 </head>
 <body>
@@ -42,9 +41,9 @@
       <h2>Two Paths From the Same Past</h2>
       <p class="caption">
         Global surface air temperature anomaly from 1850 to 2100 under SSP1-2.6 and SSP5-8.5.
-        <!-- Ryan: replace with a one-line note on how to use the interaction, e.g. "Hover over a line to see each model's value." -->
+        The line is the average of 12 to 13 CMIP6 models and the shaded band is their full range.
+        Hover to read values, drag the overview strip to zoom, and move the threshold slider to see when each future gets there.
       </p>
-      <!-- Ryan: render your D3 chart into this div (d3.select('#main-viz')) -->
       <div id="main-viz" class="viz-container">
         <div class="placeholder">Interactive visualization loading…</div>
       </div>
